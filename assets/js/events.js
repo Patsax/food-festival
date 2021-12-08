@@ -1,5 +1,5 @@
 require('bootstrap');
-const createEl = require('./domMethods');
+const createEl = require("./domMethods");
 
 if (window.location.href.indexOf("event") > -1) {
     const currentEvent = JSON.parse(localStorage.getItem("currentEvent")) || {
@@ -9,7 +9,7 @@ if (window.location.href.indexOf("event") > -1) {
     };
 
     const pageEl = document.querySelector("#page");
-    
+
     const containerEl = createEl("div", {class: "container"},
         createEl("div", {class: "card mb-3"}, 
             createEl("img", {class: "card-img-top", style: "width: 5px", src: currentEvent.image || "https://via.placeholder.com/350x150"}),
