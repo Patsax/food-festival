@@ -1,8 +1,8 @@
 const webpack = require('webpack');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const path = require('path');
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
-const config = {
+module.exports = {
     entry: {
         app: './assets/js/script.js',
         events: './assets/js/events.js',
@@ -16,23 +16,23 @@ const config = {
     module: {
         rules: [
             {
-                test: /\.(png|jpe?g|gif)$/i,
+                test: /\.jpg$/i,
                 use: [
                     {
                         loader: 'file-loader',
                         options: {
                             esModule: false,
                             name (file) {
-                                return '[path][name].[ext]'
+                                return "[path][name].[ext]"
                             },
                             publicPath: function(url) {
-                                return url.replace('../', '/assets/')
+                                return url.replace("../", "/assets/")
                             }
                         }
                     },
-                    {
-                        loader: 'image-webpack-loader'
-                    }
+                    // {
+                    //     // loader: 'image-webpack-loader'
+                    // }
                 ]
             }
         ]
@@ -43,10 +43,8 @@ const config = {
             jQuery: 'jquery'
         }),
         new BundleAnalyzerPlugin({
-            analyzerMode: 'static'
+            analyzerMode: 'static', // the report outputs to an HTML file in the dist folder
         })
     ],
     mode: 'development'
 };
-
-module.exports = config;
